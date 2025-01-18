@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="gazetedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdminSifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="kategori">
+          <Key>
+            <PropertyRef Name="kategoriId" />
+          </Key>
+          <Property Name="kategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategoriAd" Type="nvarchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="yazar">
+          <Key>
+            <PropertyRef Name="yazarId" />
+          </Key>
+          <Property Name="yazarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yazarAd" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="yazilar">
+          <Key>
+            <PropertyRef Name="yaziId" />
+          </Key>
+          <Property Name="yaziId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baslik" Type="nvarchar" MaxLength="100" />
+          <Property Name="icerik" Type="text" />
+          <Property Name="kategoriId" Type="int" />
+          <Property Name="resim" Type="nvarchar" MaxLength="50" />
+          <Property Name="slide" Type="int" />
+          <Property Name="sirano" Type="int" />
+          <Property Name="akif" Type="int" />
+          <Property Name="yazarId" Type="int" />
+        </EntityType>
+        <EntityContainer Name="gazetedbModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kategori" EntityType="Self.kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yazar" EntityType="Self.yazar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yazilar" EntityType="Self.yazilar" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gazetedbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdminSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="kategori">
+          <Key>
+            <PropertyRef Name="kategoriId" />
+          </Key>
+          <Property Name="kategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategoriAd" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="yazar">
+          <Key>
+            <PropertyRef Name="yazarId" />
+          </Key>
+          <Property Name="yazarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yazarAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="yazilar">
+          <Key>
+            <PropertyRef Name="yaziId" />
+          </Key>
+          <Property Name="yaziId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="kategoriId" Type="Int32" />
+          <Property Name="resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="slide" Type="Int32" />
+          <Property Name="sirano" Type="Int32" />
+          <Property Name="akif" Type="Int32" />
+          <Property Name="yazarId" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="gazetedbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin" EntityType="Self.admin" />
+          <EntitySet Name="kategori" EntityType="Self.kategori" />
+          <EntitySet Name="yazar" EntityType="Self.yazar" />
+          <EntitySet Name="yazilar" EntityType="Self.yazilar" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gazetedbModelStoreContainer" CdmEntityContainer="gazetedbEntities">
+          <EntitySetMapping Name="admin">
+            <EntityTypeMapping TypeName="gazetedbModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="AdminAd" ColumnName="AdminAd" />
+                <ScalarProperty Name="AdminSifre" ColumnName="AdminSifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kategori">
+            <EntityTypeMapping TypeName="gazetedbModel.kategori">
+              <MappingFragment StoreEntitySet="kategori">
+                <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+                <ScalarProperty Name="kategoriAd" ColumnName="kategoriAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yazar">
+            <EntityTypeMapping TypeName="gazetedbModel.yazar">
+              <MappingFragment StoreEntitySet="yazar">
+                <ScalarProperty Name="yazarId" ColumnName="yazarId" />
+                <ScalarProperty Name="yazarAd" ColumnName="yazarAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yazilar">
+            <EntityTypeMapping TypeName="gazetedbModel.yazilar">
+              <MappingFragment StoreEntitySet="yazilar">
+                <ScalarProperty Name="yaziId" ColumnName="yaziId" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+                <ScalarProperty Name="slide" ColumnName="slide" />
+                <ScalarProperty Name="sirano" ColumnName="sirano" />
+                <ScalarProperty Name="akif" ColumnName="akif" />
+                <ScalarProperty Name="yazarId" ColumnName="yazarId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
