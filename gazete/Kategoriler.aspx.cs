@@ -12,7 +12,7 @@ namespace gazete
         gazetedbEntities baglan=new gazetedbEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            doldur();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -22,6 +22,13 @@ namespace gazete
             baglan.kategori.Add(tablom);
             baglan.SaveChanges();
             Response.Write("Kayıt Yapıldı");
+            doldur();
+        }
+        private void doldur()
+        {
+            var liste = baglan.kategori.ToList();
+            GridView1.DataSource = liste;
+            GridView1.DataBind();
         }
     }
 }
