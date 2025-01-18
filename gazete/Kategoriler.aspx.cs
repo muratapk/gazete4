@@ -17,7 +17,11 @@ namespace gazete
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
+            kategori tablom = new kategori();
+            tablom.kategoriAd = TextBox1.Text;
+            baglan.kategori.Add(tablom);
+            baglan.SaveChanges();
+            Response.Write("Kayıt Yapıldı");
         }
     }
 }
